@@ -1,0 +1,23 @@
+/*--------------------------------------------------------------
+# Navigation Block
+--------------------------------------------------------------*/
+.wp-block-navigation{
+
+  // Elements
+  ul{
+    li{
+      a{
+      }
+    }
+  }
+
+  // Added Classes
+  &.is-style-dark{}
+  &.is-style-light{}
+  .wp-block-navigation-link{
+    .wp-block-navigation-link__content{
+      &:hover{}
+    }
+  }
+  
+}

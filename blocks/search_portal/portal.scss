@@ -1,0 +1,51 @@
+.portal {
+  .content-filters{
+    .filters-list{
+      .list-filter_group{
+        .filter_group-filters{
+          .filters-the_filter{
+            .the_filter-link{}
+          }
+        }
+      }
+    }
+  }
+  .portal-content{
+    .content-search{
+      .search-form{
+        .form-input{
+        }
+        .form-submit{}
+      }
+    }
+    .content-results_list{
+      .results_list-item{
+        .item-image{
+        }
+        .item-info{
+          .info-title{}
+          .info-excerpt{}
+        }
+      }
+    }
+    .content-pagination{
+      .pagination{
+        h2{}
+        .nav-links{
+          .page-numbers{
+            &.current{}
+          }
+        }
+      }
+    }
+  }
+
+  // Filter Item
+  .portal-queryable {
+    &.active{
+      a::after{
+      }
+    }
+  }
+
+}

@@ -1,0 +1,64 @@
+/*--------------------------------------------------------------
+# Elements: Global Styles for basic HTML elements
+--------------------------------------------------------------*/
+*{
+  box-sizing: border-box ;
+}
+
+body, .editor-styles-wrapper{
+  font: $font-normal_p;
+  color: $color-black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body{
+  padding: 0;
+  margin: 0;
+}
+img, a img{
+  border: 0;
+  max-width: 100%;
+  height: auto;
+}
+a{
+  color: $color-blue;
+  &:active, &:focus{
+    opacity: .8; 
+    outline: 0;
+  }
+}
+form{
+  input, textarea{
+    font: $font-h4 !important;
+    font-weight: $font-weight-alternate-regular !important;
+    padding: $cell-standard*.6 $cell-standard !important;
+    border: 1px solid #c2cdd8;
+    border-radius: 4px;
+    &:active, &:focus{
+      border-color: $color-blue;
+      outline: none;
+    }
+  }
+  label{
+    font: $font-h4 !important;
+    text-transform: uppercase;
+  }
+  input{
+    line-height: 1;
+  }
+  input[type=submit], button{
+    @include button();
+    background: $color-blue;
+    color: $color-white;
+  }
+  input[type=submit]{
+    border: 0;
+  }
+}
+
+// Gravity Forms
+.gform_wrapper .top_label div.ginput_container{
+  margin-top: 0 !important;
+}
+
+table{}

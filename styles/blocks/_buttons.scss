@@ -1,0 +1,55 @@
+/*--------------------------------------------------------------
+# Buttons Block
+--------------------------------------------------------------*/
+.wp-block-buttons{
+  .wp-block-button{
+  }
+}
+.wp-block-button{
+  margin: $cell-standard 0;
+  color: inherit;
+
+  // Outlined Style
+  &.is-style-outline{
+    .wp-block-button__link, a{
+      background-color: transparent !important;
+    }
+  }
+
+  // Squared Style
+  &.is-style-squared{}
+
+  // Button Link
+  .wp-block-button__link, a{
+    @include button();
+    &:not(.has-text-color) {
+      color: $color-white;
+      &:hover {
+        color: white;
+      }
+    }
+  
+    &:not(.has-background) {
+      background-color: $color-blue;
+    }
+  }
+
+  // Special Hacks for alignment
+  &.alignright{
+    float: none;
+    a{
+      float: right;
+      margin-left: 1em;
+      max-width: 300px;
+    }
+  }
+  &.alignleft{
+    float: none;
+    a{
+      float: left;
+      margin-right: 1em;
+      max-width: 300px;
+    }
+  }
+
+}

@@ -1,0 +1,23 @@
+/*--------------------------------------------------------------
+# Image Block
+--------------------------------------------------------------*/
+.wp-block-image{
+
+  // Image Element
+  img{}
+
+  // Caption Element
+  figcaption{
+    font: $font-small_p;
+    text-align: center;
+    color: $color-gray-500;
+  }
+
+  // Alignment options
+  &.alignfull{
+    max-width: 100% !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+
+}

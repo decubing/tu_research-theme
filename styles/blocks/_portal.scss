@@ -1,0 +1,212 @@
+.portal {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-top: $cell-standard*2;
+  @media only screen and (max-width: $screen-tablet){
+    margin-top: 0;
+  }
+  .portal-filters{
+    width: 25%;
+    @media only screen and (max-width: $screen-tablet){
+      width: 100%;
+    }
+    .filters-filter_group{
+      margin-bottom: $cell-standard*2;
+      &.active{
+        .filter_group-toggle:before{
+          content: '-';
+        }
+        & > ul{
+          display: block;
+        }
+      }
+      .filter_group-toggle{
+        position: relative;
+        color: $color-green-500;
+        font: $font-h4;
+        text-transform: capitalize;
+        background: none;
+        border: 0;
+        padding: 0;
+        padding-left: $cell-standard*1.5;
+        &:before{
+          content: '+';
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 4.5px;
+          justify-content: center;
+          align-items: center;
+          background: $color-green-500;
+          color: $color-white;
+          font: $font-h4;
+          line-height: 0;
+          padding: 8px 6px 12px 6px;
+          border-radius: 50%;
+          margin-right: $cell-standard/4;
+        }
+
+      }
+      ul{
+        padding:0;
+        display: none;
+        li{
+          display: block;
+          font: $font-h4;
+          font-weight: $font-weight-alternate-regular;
+          line-height: 2;
+          &:before{
+            content: '>';
+            margin-right: $cell-standard/3;
+            color: $color-gray;
+          }
+          a{
+            color: $color-gray;
+            text-decoration: none;
+            &:hover{
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+      
+      // Mobile Filter Settings
+      @media only screen and (max-width: $screen-tablet){
+        margin-bottom: 0;
+        padding: $cell-standard 0;
+        border-bottom: 1px solid $color-gray-500;
+        .filter_group-toggle{
+          &:before{
+            content: '-' !important;
+          }
+        }
+        & > ul{
+          display: block !important;
+        }
+        &.active{
+          .filter_group-toggle:before{
+            content: '+' !important;
+          }
+          & > ul{
+            display: none !important;
+          }
+        }
+      }
+
+    }
+  }
+  .portal-content{
+    width: 75%;
+    @media only screen and (max-width: $screen-tablet){
+      width: 100%;
+      margin-top: $cell-standard*2;
+    }
+    .content-search{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .search-form{
+        display: flex;
+        width: 100%;
+        margin-bottom: $cell-standard*2;
+        padding: 0;
+        .form-input{
+          width: 98%;
+          margin-right: 2%;
+        }
+        .form-submit{}
+      }
+    }
+    .content-results_list{
+      width: 100%;
+      padding: 0;
+      .results_list-item{
+        display: flex;
+        align-items: center;
+        padding-bottom: $cell-standard*2;
+        border-bottom: 1px solid $color-gray-500;
+        margin-bottom: $cell-standard*2;
+        .item-image{
+          img{
+            width: $cell-standard*13 !important;
+          }
+        }
+        .item-info{
+          width: 100%;
+          padding-left: $cell-standard;
+          padding-bottom: 4px;
+          .info-title{
+            font: $font-h3;
+            color: $color-gray;
+          }
+          .info-excerpt{
+            font: $font-normal_p;
+          }
+          .info-categories{
+            ul{
+              padding: 0;
+              margin-top: $cell-standard*.75;
+              li{
+                display: inline;
+                a{
+                  display: inline-block;
+                  background: lighten($color-gray, 55%);
+                  padding: 0 $cell-standard/2;
+                  font-family: $font-family-alternate;
+                  border-radius: 4px;
+                  color: $color-gray;
+                  text-decoration: none;
+                  transition: .2s color, .2s background-color;
+                  &:hover{
+                    color: $color-white;
+                    background-color: $color-blue;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .content-pagination{
+      font: $font-h4;
+      .pagination{
+        h2{}
+        a, .current{
+          margin-right: $cell-standard;
+          text-decoration: none;
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+        .nav-links{
+          .page-numbers{
+            &.current{}
+          }
+        }
+      }
+    }
+  }
+
+  // Filter Item
+  .portal-queryable {
+    &.active{
+      a::after{
+        content: 'x';
+        color: white;
+        display: inline-block;
+        justify-content: center;
+        align-items: center;
+        background: $color-blue;
+        color: $color-white;
+        font: $font-h4;
+        line-height: 0;
+        padding: 8px 6px 12px 6px;
+        border-radius: 50%;
+        margin-left: $cell-standard/4;
+      }
+    }
+  }
+
+}
