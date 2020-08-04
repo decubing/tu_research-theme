@@ -57,9 +57,10 @@ function trp_update_listings( $post_id, $entry, $form ) {
   wp_update_post( $post );
 
   // Update ACF fields after the post is updated
-  update_field('contact_email', $entry[4], $post_id); // TODO fix this; not working but why?
+  update_field('contact_email', $entry[4], $post_id);
   if (isset($entry[18])) update_field('custom_applicant_question_1', $entry[18], $post_id);
   if (isset($entry[19])) update_field('custom_applicant_question_2', $entry[19], $post_id);
+  if (isset($entry[23])) update_field('additional_applicant_uploads', $entry[23], $post_id);
 }
 
 
@@ -67,9 +68,11 @@ function trp_update_listings( $post_id, $entry, $form ) {
  * Updates faculty-defined fields and contact email
  * for application submission forms
  * from their default values.
- * 3 and 4 are the custom question field IDs: 
+ * 3, 4, and 6 are the custom question field IDs: 
  *  hide if not submitted
  *  replace otherwise
+ * 
+ * 5 is the mailto email field
  * 
  * Relevant form ID is 2 on local, 4 on staging.
  */
@@ -84,9 +87,10 @@ function trp_set_subform_fields( $form ) {
 
   $q1 = get_field('custom_applicant_question_1', $post->ID);
   $q2 = get_field('custom_applicant_question_2', $post->ID);
+  $uploads = get_field('additional_applicant_uploads', $post->ID);
   $email = get_field('contact_email', $post->ID);
 
-  // IMPORTANT: pass the field by value
+  // IMPORTANT: pass the field by reference
   foreach ($form['fields'] as &$ff) {
     switch ($ff->id) {
       case 3: 
@@ -99,6 +103,10 @@ function trp_set_subform_fields( $form ) {
         break;
       case 5:
         $ff->defaultValue = $email ?: '';
+        break;
+      case 6:
+        if ($uploads) $ff->label = $uploads; 
+        else $ff->visibility = 'hidden';
         break;
     }
   }

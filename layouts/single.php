@@ -91,6 +91,35 @@ if( is_single() || is_singular() ):
 </div>
 
 <?php
+// Featured Projects - hooked into research listings
+// See custom_post_types.php and customizer.php
+if( is_singular('research-listing') && get_theme_mod("trp_featured_projects_1") ): ?>
+  <div class="projects-container">
+    <h3 class="projects-header">Featured Projects</h3>
+    <div class="projects-card_container">
+    <?php foreach ([1,2,3] as $num): $feature_id = (int)get_theme_mod("trp_featured_projects_$num"); ?>
+      <?php if ( $feature_id ): 
+        $image = get_the_post_thumbnail($feature_id, 'thumbnail');
+        $category = get_the_category($feature_id);
+        $link = get_the_permalink($feature_id);
+        if (!empty($category)) $category = $category[0]->name;
+        $title = get_the_title($feature_id);
+        $excerpt = wp_trim_words(get_the_excerpt($feature_id), 7);
+        ?>
+          <div class="projects-card">
+            <a href="<?=$link?>" class="projects-link">
+              <div class="card-image"><?=$image?></div>
+              <div class="card-category"><?=$category?></div>
+              <div class="card-title"><?=$title?></div>
+              <div class="card-excerpt"><?=$excerpt?></div>
+            </a>
+          </div>
+      <?php endif;
+    endforeach; ?>
+    </div>
+  </div>
+<?php endif;
+
 // End Single Content Layout
 endif;
 ?>

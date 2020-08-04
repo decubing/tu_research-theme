@@ -41,4 +41,7 @@ require_once('includes/gform_functions.php' );
 // Custom search portal block
 require_once('blocks/search_portal/config.php' );
 
+// Featured Projects block
+require_once('blocks/featured_projects/config.php' );
+
 ?>

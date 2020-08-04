@@ -1,4 +1,4 @@
-# This theme is built on blockly
+# Say Hello to Blockly
 
 Blockly is a WordPress starter theme built to support "Gutenberg" editor blocks. Like [_s], this is a starter theme. You don't need to add a child theme - just start hacking!
 

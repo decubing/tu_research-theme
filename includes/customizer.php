@@ -26,7 +26,51 @@ function theme_customizer_register( $wp_customize ) {
       'type' => 'text',
     )
   );
+
+  // 3 featured projects
+  foreach ([1,2,3] as $num) {
+    $wp_customize->add_setting( "trp_featured_projects_$num", array(
+      'capability' => 'edit_theme_options',
+      'sanitize_callback' => 'trp_sanitize_featured_projects',
+    ) );
+    $wp_customize->add_control("trp_featured_projects_$num", [
+      'label'    => "Featured Project $num",
+      'description' => 'Select up to three featured projects to showcase across the site',
+      'section'  => 'title_tagline',
+      'type'     => 'select',
+      'choices' => trp_research_listings()
+    ]
+  );
+  }
+
   
+  // Ensure input is an absolute integer that correspond to published pages.
+  function trp_sanitize_featured_projects( $input, $setting ) {
+    if ( get_post_status( (int)$input ) === 'publish' ) {
+        return $input;
+    } else {
+      return false;
+    }
+  }
 }
-add_action( 'customize_register', 'theme_customizer_register' ); 
+add_action( 'customize_register', 'theme_customizer_register' );
+
+function trp_research_listings() {
+  $projects = get_posts([
+    'post_type' => 'research-listing',
+    'posts_per_page' => -1,
+    'fields' => [
+      'id',
+      'title'
+    ]
+  ]);
+
+  $pjs = [];
+  foreach ($projects as $project) {
+    $pjs[$project->ID] = $project->post_title;
+  }
+
+  return $pjs;
+}
+
 ?>

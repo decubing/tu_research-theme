@@ -161,8 +161,12 @@ if ($tax_filter_query->have_posts()) {
             } else {
               $url .= $param_q_string;
             }
+            // Get nice name for term
+            $term_nice_name = get_term_by('slug', $term, $taxonomy)->name ?? $term;
             ?>
-          <li class="<?=$taxonomy?>_filters-the_filter portal-queryable<?=$active_class?>"><a class="the_filter-link" href="<?=$url?>"><?=$term?> (<?=$count?>)</a></li>
+          <li class="<?=$taxonomy?>_filters-the_filter portal-queryable<?=$active_class?>">
+            <a class="the_filter-link" href="<?=$url?>"><?=$term_nice_name?> (<?=$count?>)</a>
+          </li>
         <?php endforeach; ?>
       </ul>
     </div>
@@ -190,13 +194,14 @@ if ($tax_filter_query->have_posts()) {
           $title = get_the_title();
           $excerpt = get_the_excerpt();
           $categories = get_the_category_list();
+          $permalink = get_the_permalink();
           ?>
           <li class='results_list-item'>
             <div class="item-image">
               <?=$thumbnail?>
             </div>
             <div class="item-info">
-              <div class="info-title"><?=$title?></div>
+              <div class="info-title"><a href="<?=$permalink?>"><?=$title?></a></div>
               <div class="info-excerpt"><?=$excerpt?></div>
               <div class="info-categories"><?=$categories?></div>
             </div>
