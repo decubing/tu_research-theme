@@ -2,20 +2,19 @@
 
 /**
  * Updates auto-generated listing pages.
- * Template page ID is hardcoded in here. Oh well.
+ * Template page ID set through customizer: theme_template_post_id
  * Changes their post type and sets new content.
  * Rewrites placeholders from the page template.
  * Sets post meta for modifying secondary gravity form:
  *   faculty-defined fields + hidden email field for recipient
- * 
- * Relevant form ID is 1 on local, 3 on staging.
  */
 add_action( 'gform_after_create_post', 'trp_update_listings', 10, 3 );
 function trp_update_listings( $post_id, $entry, $form ) {
     
-  $TEMPLATE_ID = 55;
+  $TEMPLATE_ID = (int)get_theme_mod('theme_template_post_id');
   $post = get_post( $post_id );
-  $template = get_post( $TEMPLATE_ID );
+  $template = get_post( $TEMPLATE_ID ); // TODO:
+  if (!$post || !$template) return; // something went wrong
   
   // $test = [];
   // foreach ($form['fields'] as $ff) { $test[$ff->id] = $ff->label; }
@@ -82,8 +81,9 @@ add_filter( 'gform_admin_pre_render', 'trp_set_subform_fields' );
 add_filter( 'gform_pre_render', 'trp_set_subform_fields' );
 function trp_set_subform_fields( $form ) {
   global $post;
+  $FORM_ID = (int)get_theme_mod('theme_applicant_form_id');
   if (!$post) return $form;
-  if ($form['id'] !== 2 && $form['id'] !== 4) return $form;
+  if ($form['id'] !== $FORM_ID) return $form;
 
   $q1 = get_field('custom_applicant_question_1', $post->ID);
   $q2 = get_field('custom_applicant_question_2', $post->ID);

@@ -27,6 +27,26 @@ function theme_customizer_register( $wp_customize ) {
     )
   );
 
+  $wp_customize->add_setting( 'theme_template_post_id' );
+  $wp_customize->add_control( 'theme_template_post_id',
+    array(
+      'label' => 'Listing Template ID',
+      'description' => 'The ID of a page to use as the template for research listings',
+      'section' => 'title_tagline',
+      'type' => 'number',
+    )
+  );
+
+  $wp_customize->add_setting( 'theme_applicant_form_id' );
+  $wp_customize->add_control( 'theme_applicant_form_id',
+    array(
+      'label' => 'Applicant Form ID',
+      'description' => 'The ID of a form to use for applicants on research listing pages',
+      'section' => 'title_tagline',
+      'type' => 'number',
+    )
+  );
+
   // 3 featured projects
   foreach ([1,2,3] as $num) {
     $wp_customize->add_setting( "trp_featured_projects_$num", array(
