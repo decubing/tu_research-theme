@@ -44,4 +44,7 @@ require_once('blocks/search_portal/config.php' );
 // Featured Projects block
 require_once('blocks/featured_projects/config.php' );
 
+// Update Logo
+require_once('includes/login_logo.php' );
+
 ?>
