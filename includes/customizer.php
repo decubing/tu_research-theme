@@ -37,16 +37,6 @@ function theme_customizer_register( $wp_customize ) {
     )
   );
 
-  $wp_customize->add_setting( 'theme_listing_form_page_id' );
-  $wp_customize->add_control( 'theme_listing_form_page_id',
-    array(
-      'label' => 'Listing Form Page ID',
-      'description' => 'The ID of the page containing the research listing form',
-      'section' => 'title_tagline',
-      'type' => 'number',
-    )
-  );
-
   $wp_customize->add_setting( 'theme_applicant_form_id' );
   $wp_customize->add_control( 'theme_applicant_form_id',
     array(
