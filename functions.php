@@ -47,4 +47,7 @@ require_once('blocks/featured_projects/config.php' );
 // Update Logo
 require_once('includes/login_logo.php' );
 
+// LDAP Authorization
+require_once('includes/ldap_auth.php' );
+
 ?>
