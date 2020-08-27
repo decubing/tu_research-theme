@@ -116,14 +116,16 @@ function trp_set_subform_fields( $form ) {
 
 /**
  * Prepopulates Email and Name fields of forms with logged in user's data.
+ * Also prepopulates school, if available.
  * Does nothing if no logged in user.
  */
-add_filter( 'gform_pre_render', 'trp_prepopulate_name_and_email' );
-function trp_prepopulate_name_and_email( $form ) {
+add_filter( 'gform_pre_render', 'trp_prepopulate_fields' );
+function trp_prepopulate_fields( $form ) {
   $userdata = wp_get_current_user();
   if ($userdata->ID === 0) {
     return $form;
   }
+
   $firstname = $userdata->user_firstname ?? '';
   $lastname = $userdata->user_lastname ?? '';
   if (!$firstname && !$lastname) {
@@ -132,15 +134,22 @@ function trp_prepopulate_name_and_email( $form ) {
     $fullname =  trim( "$firstname $lastname" );
   }
   $email = $userdata->user_email;
+  $school = get_user_meta($userdata->ID, 'tu_school', true);
 
   // IMPORTANT: pass the field by reference
   foreach ($form['fields'] as &$ff) {
     switch ($ff->label) {
-      case 'Name': 
+      case 'Name':
         $ff->defaultValue = $fullname;
         break;
-      case 'Email': 
+      case 'Email':
         $ff->defaultValue = $email;
+        break;
+      case 'School':
+        $ff->defaultValue = $school;
+        break;
+      case 'Name of Organization or Newcomb-Tulane Department':
+        $ff->defaultValue = $school;
         break;
     }
   }
