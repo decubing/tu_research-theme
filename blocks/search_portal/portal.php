@@ -193,7 +193,7 @@ if ($tax_filter_query->have_posts()) {
           $thumbnail = get_the_post_thumbnail(get_the_ID(), 'thumbnail');
           $title = get_the_title();
           $excerpt = get_the_excerpt();
-          $categories = get_the_category_list();
+          $categories = wp_get_post_categories(get_the_ID(), ['fields' => 'all']);
           $permalink = get_the_permalink();
           ?>
           <li class='results_list-item'>
@@ -203,7 +203,20 @@ if ($tax_filter_query->have_posts()) {
             <div class="item-info">
               <div class="info-title"><a href="<?=$permalink?>"><?=$title?></a></div>
               <div class="info-excerpt"><?=$excerpt?></div>
-              <div class="info-categories"><?=$categories?></div>
+              <div class="info-categories">
+                <ul class="post-categories">
+                  <?php foreach ($categories as $cat) {
+                    // wipe filters and set new filter for this category
+                    $slug = $cat->slug;
+                    $name = $cat->name;
+                    $url = "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+                    $wipe_filter_regex = "/&portal_filters%5B%5D=.*/";
+                    $url = preg_replace($wipe_filter_regex, '', $url);
+                    $url .= "&portal_filters%5B%5D=category_{$slug}";
+                    echo "<li><a href=\"$url\">$name</a></li>\n";
+                  } ?>
+                </ul>
+              </div>
             </div>
           </li>
         <?php endwhile; ?>
