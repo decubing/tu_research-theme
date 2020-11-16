@@ -32,6 +32,7 @@ function trp_update_listings( $post_id, $entry, $form ) {
     'OUTCOME_REWRITE' => $entry[10],
     'WORKLOAD_REWRITE' => $entry[11],
     'SKILLS_REWRITE' => $entry[13],
+    'PAID_REWRITE' => $entry[12],  
     'ELIGIBLE_REWRITE' => $entry[14],
     'PARTNERS_REWRITE' => $entry[15],
     'SPONSORS_REWRITE' => $entry[16],
