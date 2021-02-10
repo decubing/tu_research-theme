@@ -1,8 +1,8 @@
 <?php
 // =====================================================================
-// WIDGET SETTINGS
+// LOGIN SETTINGS
 // =====================================================================
-// All sidebar and widget related functions.
+// All login page related customizations.
 // =====================================================================
 
 // Intialize Sidebars
