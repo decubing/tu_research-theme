@@ -23,8 +23,6 @@ function trp_authorizer_custom_role( $role, $user_data ) {
  */
 add_filter( 'authorizer_user_register', 'trp_authorizer_set_role_and_meta', 10, 2 );
 function trp_authorizer_set_role_and_meta( $user, $user_data ) {
-  $user_id = $user->ID;
-  
   // If we have a department/schools to use, update user's meta 
   $school = $user_data['ldap_attributes'][0]['department'][0] ?? false;
   if ( $school ) {
