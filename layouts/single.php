@@ -25,7 +25,24 @@ if( is_single() || is_singular() ):
     ?>
 
     <div class="loop-the_content">
+      <?php
+      // Display author name and department
+      if ( 'research-listing' == get_post_type() ) {
+          $author_line = '';
+          if ( get_the_author() ) {
+              $author_line = get_the_author();
 
+              $department = get_the_author_meta('tu_school');
+              if ( $department ) {
+                  $author_line = sprintf("%s, %s", $author_line, $department);
+              }
+          }
+
+          if ( $author_line ) {
+              printf("<h3>%s</h3>", $author_line);
+          }
+      }
+      ?>
       <?php
       // The Content
       the_content();
