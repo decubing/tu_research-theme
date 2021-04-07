@@ -39,7 +39,7 @@ if( is_single() || is_singular() ):
           }
 
           if ( $author_line ) {
-              printf("<h3>%s</h3>", $author_line);
+              printf('<p style="font-size: 1.2em;">%s</>', $author_line);
           }
       }
       ?>
