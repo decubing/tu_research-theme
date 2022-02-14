@@ -29,8 +29,30 @@ if( is_single() || is_singular() ):
       // Display author name and department
       if ( 'research-listing' == get_post_type() ) {
           $author_line = '';
-          if ( get_the_author() ) {
-              $author_line = get_the_author();
+
+          $authorID = get_the_author_meta('ID');
+          $theAuthorDataRoles = get_userdata($authorID);
+          //echo '<pre>';
+          //print_r($theAuthorDataRoles);
+          //echo "</pre>";
+
+          $firstname = get_the_author_meta('user_firstname') ?? '';
+          $lastname = get_the_author_meta('user_lastname') ?? '';
+          
+          if (!$firstname && !$lastname) {
+            $fullname = $userdata->display_name;
+          } else {
+            $fullname =  trim( "$firstname $lastname" );
+          }
+          
+          if ( $fullname && 
+             (
+               in_array('student', $theAuthorDataRoles->roles) ||
+               in_array('faculty', $theAuthorDataRoles->roles) ||
+               in_array('administrator', $theAuthorDataRoles->roles)
+              )
+           ) {
+              $author_line = $fullname;
 
               $department = get_the_author_meta('tu_school');
               if ( $department ) {
