@@ -3,6 +3,44 @@
     "title": "Listing Meta",
     "fields": [
         {
+            "key": "field_621540fcda736",
+            "label": "Faculty Name",
+            "name": "faculty_name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6215412cda737",
+            "label": "School",
+            "name": "school",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5f0cbe0c71658",
             "label": "Contact Email",
             "name": "contact_email",
@@ -95,5 +133,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1596059516
+    "modified": 1645560211
 }

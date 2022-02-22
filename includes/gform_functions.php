@@ -58,6 +58,8 @@ function trp_update_listings( $post_id, $entry, $form ) {
 
   // Update ACF fields after the post is updated
   update_field('contact_email', $entry[4], $post_id);
+  if (isset($entry[5])) update_field('school', $entry[5], $post_id); // update school name
+  if (isset($entry[25])) update_field('faculty_name', $entry[25], $post_id); // update faculty name
   if (isset($entry[18])) update_field('custom_applicant_question_1', $entry[18], $post_id);
   if (isset($entry[19])) update_field('custom_applicant_question_2', $entry[19], $post_id);
   if (isset($entry[23])) update_field('additional_applicant_uploads', $entry[23], $post_id);

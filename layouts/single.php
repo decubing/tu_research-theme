@@ -28,37 +28,19 @@ if( is_single() || is_singular() ):
       <?php
       // Display author name and department
       if ( 'research-listing' == get_post_type() ) {
+
+          $faculty_name = get_field('faculty_name');
+          $school = get_field('school');
+
           $author_line = '';
+          $seperator = ", ";
 
-          $authorID = get_the_author_meta('ID');
-          $theAuthorDataRoles = get_userdata($authorID);
-          //echo '<pre>';
-          //print_r($theAuthorDataRoles);
-          //echo "</pre>";
-
-          $firstname = get_the_author_meta('user_firstname') ?? '';
-          $lastname = get_the_author_meta('user_lastname') ?? '';
-          
-          if (!$firstname && !$lastname) {
-            $fullname = $userdata->display_name;
-          } else {
-            $fullname =  trim( "$firstname $lastname" );
+          if($faculty_name !== "" && $school !== ""){
+            $author_line = $faculty_name.$seperator.$school;
+          }else{
+            $author_line.=$faculty_name.$school;
           }
-          
-          if ( $fullname && 
-             (
-               in_array('student', $theAuthorDataRoles->roles) ||
-               in_array('faculty', $theAuthorDataRoles->roles) ||
-               in_array('administrator', $theAuthorDataRoles->roles)
-              )
-           ) {
-              $author_line = $fullname;
 
-              $department = get_the_author_meta('tu_school');
-              if ( $department ) {
-                  $author_line = sprintf("%s, %s", $author_line, $department);
-              }
-          }
 
           if ( $author_line ) {
               printf('<p style="font-size: 1.1em;">%s</>', $author_line);
