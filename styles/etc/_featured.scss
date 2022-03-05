@@ -38,16 +38,18 @@
           object-fit: cover;
         }
       }
-      .card-category,
+      .card-category{}
       .card-title,
       .card-excerpt{
         margin: 2px $cell-standard; 
+        line-height: 1em;
       }
       .card-category{
 
       }
       .card-title{
         font: $font-h4;
+        padding-bottom:6px;
       }
       .card-excerpt{
 

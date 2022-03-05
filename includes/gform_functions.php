@@ -10,7 +10,8 @@
  */
 add_action( 'gform_after_create_post', 'trp_update_listings', 10, 3 );
 function trp_update_listings( $post_id, $entry, $form ) {
-    
+  
+
   $TEMPLATE_ID = (int)get_theme_mod('theme_template_post_id');
   $post = get_post( $post_id );
   $template = get_post( $TEMPLATE_ID ); // TODO:
@@ -63,6 +64,22 @@ function trp_update_listings( $post_id, $entry, $form ) {
   if (isset($entry[18])) update_field('custom_applicant_question_1', $entry[18], $post_id);
   if (isset($entry[19])) update_field('custom_applicant_question_2', $entry[19], $post_id);
   if (isset($entry[23])) update_field('additional_applicant_uploads', $entry[23], $post_id);
+
+  // Update categories
+  /** @var GF_Field $field */
+  $field_id = 26;
+  $checkbox_field = GFAPI::get_field( $form, $field_id );
+  $value = $checkbox_field->get_value_submission( array() );
+
+  /* echo "<pre>";
+  print_r( $value );
+  echo "</pre>"; */
+
+  if( $value["1.1"] !== "") wp_set_post_categories($post_id, 198); //limited time
+  if( $value["1.2"] !== "") wp_set_post_categories($post_id, 197); //open lab
+  if( $value["1.3"] !== "") wp_set_post_categories($post_id, 196); //shadowing
+ 
+
 }
 
 

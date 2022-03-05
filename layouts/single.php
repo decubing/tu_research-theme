@@ -35,7 +35,7 @@ if( is_single() || is_singular() ):
           $author_line = '';
           $seperator = ", ";
 
-          if($faculty_name !== "" && $school !== ""){
+          if(trim($faculty_name) !== "" && trim($school) !== ""){
             $author_line = $faculty_name.$seperator.$school;
           }else{
             $author_line.=$faculty_name.$school;

@@ -117,6 +117,7 @@
           border-radius: 4px;
           transition: opacity .2s, top .3s;
           opacity: 0;
+          z-index:5;
           &:after{
             bottom: 100%;
             left: 50%;
@@ -140,6 +141,7 @@
               font: $font-h5;
               text-transform: uppercase;
               letter-spacing: 1px;
+              line-height:1em;
               &:hover{
                 text-decoration: underline;
               }
