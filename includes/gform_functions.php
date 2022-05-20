@@ -71,13 +71,15 @@ function trp_update_listings( $post_id, $entry, $form ) {
   $checkbox_field = GFAPI::get_field( $form, $field_id );
   $value = $checkbox_field->get_value_submission( array() );
 
-  /* echo "<pre>";
+  /*
+  echo "<pre>";
   print_r( $value );
-  echo "</pre>"; */
+  echo "</pre>"; 
+  */
 
-  if( $value["1.1"] !== "") wp_set_post_categories($post_id, 198); //limited time
-  if( $value["1.2"] !== "") wp_set_post_categories($post_id, 197); //open lab
-  if( $value["1.3"] !== "") wp_set_post_categories($post_id, 196); //shadowing
+  if( !empty($value["1.1"]) ) wp_set_post_categories($post_id, 198, true); //limited time
+  if( !empty($value["1.2"]) ) wp_set_post_categories($post_id, 197, true); //open lab
+  if( !empty($value["1.3"]) ) wp_set_post_categories($post_id, 196, true); //shadowing
  
 
 }
