@@ -12,7 +12,7 @@
     .projects-card{
       flex: 0 1 $cell-standard*16; /*  No stretching: */
       margin: $cell-standard*2;
-      height: $cell-standard*20;
+      min-height: $cell-standard*20;
       border: 1px solid $color-gray-500;
       border-radius: 6px;
       box-shadow: 2px 2px 8px -3px rgba(0,0,0,0.3);
@@ -27,6 +27,11 @@
         color: inherit;
         display: block;
         height: 100%;
+        .card-category {
+          padding: 0.6em 1em 0em 1em;
+          text-transform: uppercase;
+          font: 500 14px/1 "freight-sans-pro", sans-serif;
+        }
       }
 
       display: flex;
@@ -50,6 +55,7 @@
       .card-title{
         font: $font-h4;
         padding-bottom:6px;
+        line-height: 1.2em;
       }
       .card-excerpt{
 

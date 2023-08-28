@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "portal.scss"
-    ],
-    "names": [],
-    "file": "portal.css"
-}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"portal.css"}
