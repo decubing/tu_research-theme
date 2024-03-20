@@ -54,6 +54,6 @@ require_once('includes/login_logo.php' );
 require_once('includes/ldap_auth.php' );
 
 // Shortcodes
-require_once('includes/shortcodes.php');
+//require_once('includes/shortcodes.php');
 
 ?>
