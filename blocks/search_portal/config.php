@@ -1,5 +1,7 @@
 <?php
 
+// Sample filtered URL: /portal_filters%5B%5D=department_school-of-medicine
+
 // Block registration
 function register_search_portal_block() {
 

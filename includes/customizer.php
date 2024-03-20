@@ -37,6 +37,16 @@ function theme_customizer_register( $wp_customize ) {
     )
   );
 
+  $wp_customize->add_setting( 'theme_template_post_id_som' );
+  $wp_customize->add_control( 'theme_template_post_id_som',
+    array(
+      'label' => 'Listing Template ID (School of Medicine)',
+      'description' => 'The ID of a page to use as the template for School of Medicine research listings',
+      'section' => 'title_tagline',
+      'type' => 'number',
+    )
+  );
+
   $wp_customize->add_setting( 'theme_applicant_form_id' );
   $wp_customize->add_control( 'theme_applicant_form_id',
     array(

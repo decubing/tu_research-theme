@@ -34,7 +34,7 @@ if ( ! function_exists( 'gutenbergtheme_setup' ) ) {
       array(
         'name' => 'green-500',
         'slug' => 'green-500',
-        'color' => '#d1d1d1',
+        'color' => '#5C5C5C',
       ),
       array(
         'name' => 'blue',

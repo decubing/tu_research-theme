@@ -60,11 +60,11 @@ Tags: block-styles, wide-blocks, one-column, left-sidebar, custom-logo, featured
 }
 
 .has-gray-500-background-color {
-  background-color: #d1d1d1;
+  background-color: #5C5C5C;
 }
 
 .has-gray-500-color {
-  color: #d1d1d1;
+  color: #5C5C5C;
 }
 
 .has-gray-250-background-color {
@@ -223,7 +223,7 @@ form input[type=submit] {
   margin: 48px auto;
   width: 100px;
   height: 2px;
-  background: #d1d1d1;
+  background: #5C5C5C;
 }
 .layout-archive .archive-content .content-masthead > div {
   max-width: 480px;
@@ -237,7 +237,7 @@ form input[type=submit] {
 }
 .layout-archive .archive-content .content-masthead .masthead-description {
   font: 400 21px/1.5 "Spectral", serif;
-  color: #d1d1d1;
+  color: #5C5C5C;
   font-style: italic;
 }
 .layout-archive .archive-content .content-masthead .masthead-subcategories .subcategories-link {
@@ -263,7 +263,7 @@ form input[type=submit] {
   margin: 48px auto;
   width: 100px;
   height: 2px;
-  background: #d1d1d1;
+  background: #5C5C5C;
 }
 .layout-archive .archive-content .content-loop .loop-listed_post:first-of-type:before {
   display: none;
@@ -334,7 +334,7 @@ form input[type=submit] {
   width: 580px;
   margin: 16px auto 32px auto;
   text-align: center;
-  color: #d1d1d1;
+  color: #5C5C5C;
 }
 .layout-single .single-loop .loop-meta:before {
   content: "";
@@ -342,13 +342,13 @@ form input[type=submit] {
   margin: 48px auto;
   width: 100px;
   height: 2px;
-  background: #d1d1d1;
+  background: #5C5C5C;
 }
 .layout-single .single-loop .loop-meta a {
-  color: #d1d1d1;
+  color: #5C5C5C;
 }
 .layout-single .single-loop .loop-meta svg {
-  fill: #d1d1d1;
+  fill: #5C5C5C;
   margin-right: 3px;
 }
 .layout-single .single-loop .loop-meta .meta-author {
@@ -439,9 +439,9 @@ form input[type=submit] {
 # Pullquote Block
 --------------------------------------------------------------*/
 .wp-block-pullquote {
-  border-top: 4px solid #d1d1d1;
-  border-bottom: 4px solid #d1d1d1;
-  color: #d1d1d1;
+  border-top: 4px solid #5C5C5C;
+  border-bottom: 4px solid #5C5C5C;
+  color: #5C5C5C;
   max-width: 580px;
   width: 100%;
   margin-left: auto;
@@ -542,7 +542,7 @@ h6 {
 # Quote Block
 --------------------------------------------------------------*/
 .wp-block-quote {
-  border-left: 4px solid #d1d1d1;
+  border-left: 4px solid #5C5C5C;
   padding: 0 16px;
 }
 .wp-block-quote.is-style-large {
@@ -551,7 +551,7 @@ h6 {
 }
 .wp-block-quote cite {
   font: 400 13px/1.7 "Spectral", serif !important;
-  color: #d1d1d1;
+  color: #5C5C5C;
 }
 
 /*--------------------------------------------------------------
@@ -563,7 +563,7 @@ h6 {
 .wp-block-image figcaption {
   font: 400 13px/1.7 "Spectral", serif;
   text-align: center;
-  color: #d1d1d1;
+  color: #5C5C5C;
 }
 .wp-block-image.alignfull {
   max-width: 100% !important;
@@ -729,7 +729,7 @@ p.has-huge-font-size {
 .wp-block-video figcaption {
   font: 400 13px/1.7 "Spectral", serif;
   text-align: center;
-  color: #d1d1d1;
+  color: #5C5C5C;
 }
 
 /*--------------------------------------------------------------
@@ -739,7 +739,7 @@ p.has-huge-font-size {
 # Table Block
 --------------------------------------------------------------*/
 .wp-block-table tbody tr td {
-  border-bottom: 1px solid #d1d1d1;
+  border-bottom: 1px solid #5C5C5C;
 }
 
 /*--------------------------------------------------------------
@@ -847,7 +847,7 @@ p.has-huge-font-size {
   .portal .portal-filters .filters-filter_group {
     margin-bottom: 0;
     padding: 16px 0;
-    border-bottom: 1px solid #d1d1d1;
+    border-bottom: 1px solid #5C5C5C;
   }
   .portal .portal-filters .filters-filter_group .filter_group-toggle:before {
     content: "-" !important;
@@ -894,7 +894,7 @@ p.has-huge-font-size {
   display: flex;
   align-items: center;
   padding-bottom: 32px;
-  border-bottom: 1px solid #d1d1d1;
+  border-bottom: 1px solid #5C5C5C;
   margin-bottom: 32px;
 }
 .portal .portal-content .content-results_list .results_list-item .item-image img {
@@ -1041,7 +1041,7 @@ p.has-huge-font-size {
   position: relative;
   margin: 0;
   padding: 8px 24px;
-  border-bottom: 1px solid #d1d1d1;
+  border-bottom: 1px solid #5C5C5C;
 }
 .header .header-menu > .menu-item.current_page_item, .header .header-menu > .menu-item.current-menu-item {
   border-bottom: 2px solid #046A38;
@@ -1107,7 +1107,7 @@ p.has-huge-font-size {
   .header .header-menu > .menu-item .sub-menu li a:hover {
     text-decoration: underline;
   }
-  .header .header-menu > .menu-item:hover .sub-menu {
+  .header .header-menu > .menu-item.open .sub-menu {
     pointer-events: all;
     top: 43px;
     opacity: 1;
@@ -1354,7 +1354,7 @@ p.has-huge-font-size {
   .footer {
     padding: 16px 16px;
     margin-top: 24px;
-    border-top: 1px solid #d1d1d1;
+    border-top: 1px solid #5C5C5C;
   }
 }
 .footer .footer-menu {
@@ -1374,7 +1374,7 @@ p.has-huge-font-size {
 .footer .footer-menu .menu-item {
   margin: 0;
   padding: 8px 24px;
-  border-bottom: 1px solid #d1d1d1;
+  border-bottom: 1px solid #5C5C5C;
 }
 @media only screen and (max-width: 768px) {
   .footer .footer-menu .menu-item {
@@ -1397,7 +1397,7 @@ p.has-huge-font-size {
   text-decoration: none;
   font: 700 14px/1.8 "freight-sans-pro", sans-serif;
   letter-spacing: 1px;
-  color: #d1d1d1;
+  color: #5C5C5C;
   text-transform: uppercase;
 }
 .footer .footer-menu .menu-item a:hover {
@@ -1430,7 +1430,7 @@ p.has-huge-font-size {
   top: -32px;
   left: 50%;
   height: 2px;
-  background: #d1d1d1;
+  background: #5C5C5C;
 }
 
 .widgets-widget {
@@ -1448,7 +1448,7 @@ p.has-huge-font-size {
 }
 .widgets-widget ul li {
   padding: 8px 0;
-  border-bottom: 1px solid #d1d1d1;
+  border-bottom: 1px solid #5C5C5C;
 }
 .widgets-widget ul li ul {
   list-style: circle;
@@ -1508,7 +1508,7 @@ p.has-huge-font-size {
 .widget_media_image div .wp-caption-text {
   margin-top: 0;
   font: 400 13px/1.7 "Spectral", serif;
-  color: #d1d1d1;
+  color: #5C5C5C;
 }
 
 .widget_search form div {
@@ -1571,7 +1571,7 @@ p.has-huge-font-size {
   flex: 0 1 256px; /*  No stretching: */
   margin: 32px;
   min-height: 320px;
-  border: 1px solid #d1d1d1;
+  border: 1px solid #5C5C5C;
   border-radius: 6px;
   box-shadow: 2px 2px 8px -3px rgba(0, 0, 0, 0.3);
   transition: 0.3s ease;

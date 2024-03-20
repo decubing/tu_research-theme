@@ -4,6 +4,7 @@ add_action("init", "blockly_register_custom_taxonomies", 0);
 function blockly_register_custom_taxonomies() {
   blockly_register_custom_taxonomy( 'Topic', 'Topics', 'research-listing' );
   blockly_register_custom_taxonomy( 'School', 'Schools', 'research-listing' );
+  blockly_register_custom_taxonomy( 'Department', 'Departments', 'research-listing' );
 }
 
 // ---------------------------------------
@@ -14,7 +15,7 @@ function blockly_register_custom_taxonomy ($singular, $plural, $object_type='pos
   $slugified_name = preg_split("/(-|_| )+/", $slugified_name);
   $slugified_name = join('-', $slugified_name);
   $args = array(
-    "hierarchical" => true, // true = category-like, false = tag-like
+    "hierarchical" => false, // true = category-like, false = tag-like
     "labels" => array(
       "name" => _x( "$plural", "taxonomy general name" ),
       "singular_name" => _x( "$singular", "taxonomy singular name" ),
@@ -30,11 +31,8 @@ function blockly_register_custom_taxonomy ($singular, $plural, $object_type='pos
     ),
     'show_in_rest' => true, // Need this for it too show up in the block editor
     "query_var" => true,
-    // Control the slugs used for this taxonomy
-    "rewrite" => array(
-      "slug" => "$slugified_name", // This controls the base slug that will display before each term
-      "with_front" => false, // Don't display the category base before "/locations/"
-    ),
+    "show_admin_column" => true,
+    
   );
   register_taxonomy($slugified_name, $object_type, $args);
 }

@@ -44,10 +44,16 @@ require_once('blocks/search_portal/config.php' );
 // Featured Projects block
 require_once('blocks/featured_projects/config.php' );
 
+// Featured Projects block
+require_once('blocks/ldap_content_block/config.php' );
+
 // Update Logo
 require_once('includes/login_logo.php' );
 
 // LDAP Authorization
 require_once('includes/ldap_auth.php' );
+
+// Shortcodes
+require_once('includes/shortcodes.php');
 
 ?>

@@ -59,17 +59,40 @@ $args = array(
   'paged'          => $current_page,
 );
 
+$department = "";
+
 // Taxonomy filter
 if ( !empty($portal_filters) ) {
   $args['tax_query'] = [];
   foreach ($portal_filters as $filter) {
     [$tax, $slug] = explode('_', $filter);
-    $args['tax_query'][] = array(
-      'taxonomy' => $tax,
-      'field'    => 'slug',
-      'terms'    => $slug,
-      'operator' => 'AND',
-    );
+
+    if($slug !== 'null'){   
+      if($tax == 'department'){
+        $department = $slug;
+      }
+      if($department !== 'school-of-medicine'){
+        $args['tax_query'][] = array(
+          'taxonomy' => 'department',
+          'field'    => 'slug',
+          'terms'    => 'school-of-medicine',
+          'operator' => 'NOT IN',
+        );
+      }else{
+        $args['tax_query'][] = array(
+          'taxonomy' => 'school',
+          'field'    => 'slug',
+          'terms'    => 'school-of-medicine',
+          'operator' => 'IN',
+        );
+      }
+      $args['tax_query'][] = array(
+        'taxonomy' => $tax,
+        'field'    => 'slug',
+        'terms'    => $slug,
+        'operator' => 'AND',
+      );
+    }
   }
 }
 
@@ -94,11 +117,19 @@ $tax_filter_query = new WP_Query( $tax_filter_args );
 // Count up reults per taxonomy using tax_filter_query
 // Each element of the form: 'taxonomy' => ['term' => count]
 // Get terms, group them by taxonomy, and tally the results up
+if( $department == "school-of-medicine" ){
+  $taxonomy_counts = [
+    'category' => [], 
+    'topic' => [], 
+  ];
+}else{
 $taxonomy_counts = [
   'category' => [], 
   'topic' => [], 
   'school' => [],
 ];
+}
+
 if ($tax_filter_query->have_posts()) {
   // Iterate through found posts
   while ($tax_filter_query->have_posts()) {
@@ -149,7 +180,8 @@ if ($tax_filter_query->have_posts()) {
             $term_param = $taxonomy . '_' . $term;
             $param_q_string = "&portal_filters%5B%5D={$term_param}";
             // note the \d* to match the digits in between the url-encoded brackets
-            $param_q_regex = "/&portal_filters%5B\d*%5D={$term_param}/";
+            $param_q_regex = "/\?portal_filters%5B0%5D={$term_param}/";
+            
             // Filter active?
             $active_class = in_array($term_param, $portal_filters) 
               ? ' active'
@@ -157,12 +189,19 @@ if ($tax_filter_query->have_posts()) {
             // Build link - depends on if is active or not
             $url = "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
             if ($active_class) {
+              /* echo "<pre>";
+              echo $url;
+              echo "</pre>"; */
               $url = preg_replace($param_q_regex, '', $url); 
+              /* echo "<pre>";
+              echo $url;
+              echo "</pre>"; */
             } else {
               $url .= $param_q_string;
             }
             // Get nice name for term
             $term_nice_name = get_term_by('slug', $term, $taxonomy)->name ?? $term;
+
             ?>
           <li class="<?=$taxonomy?>_filters-the_filter portal-queryable<?=$active_class?>">
             <a class="the_filter-link" href="<?=$url?>"><?=$term_nice_name?> (<?=$count?>)</a>

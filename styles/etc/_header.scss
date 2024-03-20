@@ -148,7 +148,7 @@
             }
           }
         }
-        &:hover{
+        &.open{
           .sub-menu{
             pointer-events: all;
             top: 43px;

@@ -52,11 +52,25 @@ if( is_single() || is_singular() ):
       the_content();
       ?>
       
-    </div>  
+    
 
     <?php
+
+    // add form for School of Medicine posts
+    if (has_term('school-of-medicine', 'school')) {
+      echo "<!-- Project Signup area -->";
+      echo do_shortcode('[private role="visitor-only"]To apply for an opportunity, <a href="https://researchnetwork.tulane.edu/wp-admin">click here</a> to login with your Tulane student ID.[/private][private role="custom" custom_role="student"][gravityform id="4" title="false" description="false"][/private]');
+       /*  echo '<div class="wp-block-group" style="background: var(--wp--preset--color--gray-250); padding: 0em 2em 2em 2em; border-top:2px solid">';
+        echo '<h3>Apply For This Opportunity</h3>';
+        echo do_shortcode('[gravityform id="2" title="false" description="false"]');
+        echo '</div>'; */
+      
+    }
+    ?>
+    </div>
+    <?php  
     // Post Meta
-    if( is_single() ):
+    if( is_single('post') ):
     ?>
 
     <div class="loop-meta">
@@ -80,6 +94,7 @@ if( is_single() || is_singular() ):
         print implode(', ', $categories);
         echo '</span>';
       }
+
       ?>
       
     </div>

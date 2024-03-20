@@ -9,6 +9,12 @@
       $(headerContent).themeHeaderNavigation();
     });
 
+    // Suppress hover dropdown
+    $('#header_menu .menu-item-has-children a').not('.sub-menu a').click(function(e){
+      e.preventDefault();
+      $(this).parent().toggleClass('open');
+    })
+
   });
 
   
