@@ -48,7 +48,7 @@ export default function ProjectFilter() {
 					return obj.id == qCats;
 				});
 				if(queryCat && queryCat.length > 0){
-					setSelectedCategories(queryCat[0]);
+					setSelectedCategories([queryCat[0]]);
 				}
 			}
 			
