@@ -1,0 +1,222 @@
+/*!*****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/search_portal/style.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************/
+#search_portal_v2_block .wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+@media only screen and (max-width: 650px) {
+  #search_portal_v2_block .wrapper {
+    display: block;
+  }
+}
+#search_portal_v2_block .wrapper .sidebar {
+  width: 28%;
+  font-family: "freight-sans-pro", sans-serif;
+}
+@media only screen and (max-width: 650px) {
+  #search_portal_v2_block .wrapper .sidebar {
+    width: 100%;
+    padding-bottom: 1em;
+  }
+}
+#search_portal_v2_block .wrapper .sidebar .check-icon {
+  max-width: 18px;
+  display: inline;
+  float: right;
+  position: absolute;
+  left: -16px;
+  top: 5px;
+}
+#search_portal_v2_block .wrapper .sidebar .tags-selector {
+  margin-top: 1em;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+#search_portal_v2_block .wrapper .sidebar .tags-selector .functions-title {
+  font-weight: bold;
+  padding-left: 0em;
+  padding-bottom: 0.618em;
+  font-size: 1.2em;
+  display: inline-block;
+}
+#search_portal_v2_block .wrapper .sidebar .tags-selector .reset {
+  color: var(--wp--preset--color--contrast);
+  opacity: 0.8;
+  font-size: 0.7em;
+  float: right;
+  cursor: pointer;
+}
+#search_portal_v2_block .wrapper .sidebar .tags-selector button {
+  border-radius: 0.5rem;
+  background: white;
+  width: 100%;
+  padding-left: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.5rem;
+  text-align: left;
+  border: 1px solid #d9d9d9;
+  box-shadow: 0px 2px 3px -1px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  font-size: 1em;
+}
+#search_portal_v2_block .wrapper .sidebar .tags-selector button[aria-expanded=true] {
+  border-color: var(--wp--preset--color--secondary);
+}
+#search_portal_v2_block .wrapper .sidebar .tags-selector .button-icon {
+  width: 16px;
+  float: right;
+}
+#search_portal_v2_block .wrapper .sidebar .tags-selector ul {
+  max-height: 300px;
+  overflow-y: scroll;
+  background-color: white;
+  border-radius: 0.5em;
+  list-style-type: none;
+  font-size: 0.9em;
+  margin: 0;
+  padding: 0;
+  margin-top: 5px;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border: 1px solid #d5d5d5;
+  box-shadow: 0px 2px 3px -1px rgba(0, 0, 0, 0.25);
+}
+#search_portal_v2_block .wrapper .sidebar .tags-selector ul .tags-item {
+  cursor: pointer;
+  padding: 0.3em 0 0.3em 2em;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+#search_portal_v2_block .wrapper .sidebar .tags-selector ul .tags-item:hover {
+  background: #dde6ef;
+}
+#search_portal_v2_block .wrapper .sidebar .tags-selector ul .tags-item.selected {
+  font-weight: bold;
+}
+#search_portal_v2_block .wrapper .sidebar .tags-selector ul .tags-item .check-icon {
+  left: 8px;
+  top: 6px;
+}
+#search_portal_v2_block .wrapper .main {
+  width: 70%;
+  padding-top: 1.5em;
+}
+@media only screen and (max-width: 650px) {
+  #search_portal_v2_block .wrapper .main {
+    width: 100%;
+  }
+}
+#search_portal_v2_block .wrapper .main h3 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.2em;
+  padding-bottom: 0.5em;
+  font-weight: bold;
+}
+#search_portal_v2_block .wrapper .main .posts-list {
+  padding: 0;
+  margin: 0;
+  margin-right: 2em;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1em;
+}
+@media only screen and (max-width: 650px) {
+  #search_portal_v2_block .wrapper .main .posts-list {
+    margin-right: 0em;
+  }
+}
+#search_portal_v2_block .wrapper .main .posts-list .post {
+  padding: 1em 1em;
+  border-radius: 0.5em;
+  min-height: 150px;
+  border: 1px solid #d5d5d5;
+  box-shadow: 0px 2px 3px -1px rgba(0, 0, 0, 0.25);
+}
+#search_portal_v2_block .wrapper .main .posts-list .post a {
+  text-decoration: none;
+  position: relative;
+  display: block;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+#search_portal_v2_block .wrapper .main .posts-list .post a .post-inner {
+  padding-left: 0.5em;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#search_portal_v2_block .wrapper .main .posts-list .post a .post-inner .post-title {
+  font-size: 0.9em;
+  line-height: 1.3em;
+  font-weight: bold;
+  color: var(--wp--preset--color--contrast);
+}
+#search_portal_v2_block .wrapper .main .posts-list .post a .post-inner .learn-more {
+  font-size: 0.9em;
+  bottom: 0em;
+}
+#search_portal_v2_block .wrapper .main .spinner-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+#search_portal_v2_block .wrapper .main .lds-ring {
+  /* change color here */
+  color: #008BD6;
+}
+#search_portal_v2_block .wrapper .main .lds-ring,
+#search_portal_v2_block .wrapper .main .lds-ring div {
+  box-sizing: border-box;
+}
+#search_portal_v2_block .wrapper .main .lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+#search_portal_v2_block .wrapper .main .lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid currentColor;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: currentColor transparent transparent transparent;
+}
+#search_portal_v2_block .wrapper .main .lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+#search_portal_v2_block .wrapper .main .lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+#search_portal_v2_block .wrapper .main .lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=style-index.css.map*/

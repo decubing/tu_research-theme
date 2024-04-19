@@ -29,8 +29,8 @@ if( is_single() || is_singular() ):
       // Display author name and department
       if ( 'research-listing' == get_post_type() ) {
 
-          $faculty_name = get_field('faculty_name');
-          $school = get_field('school');
+          $faculty_name = get_field('faculty_name') ?? "";
+          $school = get_field('school') ?? "";
 
           $author_line = '';
           $seperator = ", ";
@@ -59,7 +59,7 @@ if( is_single() || is_singular() ):
     // add form for School of Medicine posts
     if (has_term('school-of-medicine', 'school')) {
       echo "<!-- Project Signup area -->";
-      echo do_shortcode('[private role="visitor-only"]To apply for an opportunity, <a href="https://researchnetwork.tulane.edu/wp-admin">click here</a> to login with your Tulane student ID.[/private][private role="custom" custom_role="student"][gravityform id="4" title="false" description="false"][/private]');
+      //echo do_shortcode('[private role="visitor-only"]To apply for an opportunity, <a href="https://researchnetwork.tulane.edu/wp-admin">click here</a> to login with your Tulane student ID.[/private][private role="custom" custom_role="student"][gravityform id="4" title="false" description="false"][/private]');
        /*  echo '<div class="wp-block-group" style="background: var(--wp--preset--color--gray-250); padding: 0em 2em 2em 2em; border-top:2px solid">';
         echo '<h3>Apply For This Opportunity</h3>';
         echo do_shortcode('[gravityform id="2" title="false" description="false"]');

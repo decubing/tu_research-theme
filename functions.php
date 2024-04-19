@@ -47,6 +47,9 @@ require_once('blocks/featured_projects/config.php' );
 // Featured Projects block
 require_once('blocks/ldap_content_block/config.php' );
 
+// Featured Projects block
+require_once('blocks/search_portal_v2/config.php' );
+
 // Update Logo
 require_once('includes/login_logo.php' );
 

@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "search-portal-v2/search-portal-v2",
+	"version": "0.1.0",
+	"title": "Search Portal v2",
+	"category": "widgets",
+	"icon": "welcome-widgets-menus",
+	"description": "Block for displaying a filtered list of use cases.",
+	"supports": {
+		"html": false,
+		"alignWide": true
+	},
+	"textdomain": "search_portal_v2",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"viewScript": "file:./view.js",
+	"style": "file:./style-index.css"
+}

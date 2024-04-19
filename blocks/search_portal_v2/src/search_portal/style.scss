@@ -1,0 +1,217 @@
+$wp-global--content-size: 650px;
+$wp-gloabl--wide-width: var(--wp--style--global--wide-size);
+
+#search_portal_v2_block {
+	.wrapper {
+		display: flex;
+		width: 100%;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+		align-items: flex-start;
+		align-content: flex-start;
+		@media only screen and (max-width: $wp-global--content-size) {
+			display: block;
+		}
+
+		.sidebar {
+			width: 28%;
+			font-family: "freight-sans-pro", sans-serif;
+			@media only screen and (max-width: $wp-global--content-size) {
+				width: 100%;
+				padding-bottom: 1em;
+			}
+			.check-icon {
+				max-width: 18px;
+				display: inline;
+				float: right;
+				position: absolute;
+				left: -16px;
+				top: 5px;
+			}
+			
+			.tags-selector {
+				margin-top: 1em;
+				padding: 0.5em;
+				border-radius: 0.5em;
+				.functions-title {
+					font-weight: bold;
+					padding-left: 0em;
+					padding-bottom: 0.618em;
+					font-size: 1.2em;
+					display: inline-block;
+				}
+				.reset {
+					color: var(--wp--preset--color--contrast);
+					opacity: 0.8;
+					font-size: 0.7em;
+					float: right;
+					cursor: pointer;
+				}
+				button {
+					border-radius: 0.5rem;
+					background: white;
+
+					width: 100%;
+					padding-left: 1rem;
+					padding-top: 0.75rem;
+					padding-bottom: 0.5rem;
+					text-align: left;
+					border: 1px solid #d9d9d9;
+					box-shadow: 0px 2px 3px -1px rgb(0, 0, 0, 25%);
+					cursor: pointer;
+					user-select: none;
+					font-size: 1em;
+					&[aria-expanded="true"] {
+						border-color: var(--wp--preset--color--secondary);
+					}
+				}
+				.button-icon {
+					width: 16px;
+					float: right;
+				}
+				ul {
+					max-height: 300px;
+					overflow-y: scroll;
+					background-color: white;
+					border-radius: 0.5em;
+					list-style-type: none;
+					font-size: 0.9em;
+					margin: 0;
+					padding: 0;
+					margin-top: 5px;
+					padding-top: 0.5em;
+					padding-bottom: 0.5em;
+					border: 1px solid #d5d5d5;
+					box-shadow: 0px 2px 3px -1px rgb(0, 0, 0, 25%);
+					.tags-item {
+						cursor: pointer;
+						padding: 0.3em 0 0.3em 2em;
+						position: relative;
+						user-select: none;
+						&:hover {
+							background: #dde6ef;
+						}
+						&.selected {
+							font-weight: bold;
+						}
+						.check-icon {
+							left: 8px;
+							top: 6px;
+						}
+					}
+				}
+			}
+		}
+		.main {
+			width: 70%;
+			padding-top:1.5em;
+			@media only screen and (max-width: $wp-global--content-size) {
+				width: 100%;
+			}
+			h3 {
+				padding: 0;
+				margin: 0;
+				font-size: 1.2em;
+				padding-bottom: 0.5em;
+				font-weight: bold;
+			}
+			.posts-list {
+				padding: 0;
+				margin: 0;
+				margin-right: 2em;
+				@media only screen and (max-width: $wp-global--content-size) {
+					margin-right: 0em;
+				}
+				list-style-type: none;
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 1em;
+
+				.post {
+					padding: 1em 1em;
+					border-radius: 0.5em;
+					min-height: 150px;
+					border: 1px solid #d5d5d5;
+					box-shadow: 0px 2px 3px -1px rgb(0, 0, 0, 25%);
+
+					a {
+						text-decoration: none;
+						position: relative;
+						display: block;
+						height: 100%;
+						display: flex;
+						flex-direction: row;
+						.post-inner {
+							padding-left:.5em;
+							height: 100%;
+							display: flex;
+							flex-direction: column;
+							justify-content: space-between;
+							.post-title {
+								font-size: 0.9em;
+								line-height: 1.3em;
+								font-weight: bold;
+								color: var(--wp--preset--color--contrast);
+							}
+							.learn-more {
+								font-size: 0.9em;
+								bottom: 0em;
+							}
+						}
+					}
+				}
+			}
+
+			.spinner-wrap {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 200px;
+			}
+			.lds-ring {
+				/* change color here */
+				color: #008BD6
+			  }
+			  .lds-ring,
+			  .lds-ring div {
+				box-sizing: border-box;
+			  }
+			  .lds-ring {
+				display: inline-block;
+				position: relative;
+				width: 80px;
+				height: 80px;
+			  }
+			  .lds-ring div {
+				box-sizing: border-box;
+				display: block;
+				position: absolute;
+				width: 64px;
+				height: 64px;
+				margin: 8px;
+				border: 8px solid currentColor;
+				border-radius: 50%;
+				animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+				border-color: currentColor transparent transparent transparent;
+			  }
+			  .lds-ring div:nth-child(1) {
+				animation-delay: -0.45s;
+			  }
+			  .lds-ring div:nth-child(2) {
+				animation-delay: -0.3s;
+			  }
+			  .lds-ring div:nth-child(3) {
+				animation-delay: -0.15s;
+			  }
+			  @keyframes lds-ring {
+				0% {
+				  transform: rotate(0deg);
+				}
+				100% {
+				  transform: rotate(360deg);
+				}
+			  }
+
+		}
+	}
+}
