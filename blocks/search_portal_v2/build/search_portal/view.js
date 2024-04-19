@@ -11838,7 +11838,7 @@ function ProjectFilter() {
   // fetch the cats
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
-      path: "/wp/v2/categories/?per_page=100"
+      path: "/wp/v2/categories/?per_page=100&post_type=research-listing&_fields=id,count,name,slug"
     }).then(data => {
       Object.keys(data).forEach(key => {
         if (data[key].count === 0) {
@@ -11877,7 +11877,7 @@ function ProjectFilter() {
   // fetch the topics
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
-      path: "/wp/v2/topic/?per_page=100"
+      path: "/wp/v2/topic/?per_page=100&post_type=research-listing&_fields=id,count,name,slug"
     }).then(data => {
       Object.keys(data).forEach(key => {
         if (data[key].count === 0) {
@@ -11901,7 +11901,7 @@ function ProjectFilter() {
   // fetch the schools
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
-      path: "/wp/v2/school/?per_page=100"
+      path: "/wp/v2/school/?per_page=100&post_type=research-listing&_fields=id,count,name,slug"
     }).then(data => {
       Object.keys(data).forEach(key => {
         if (data[key].count === 0) {
@@ -11924,7 +11924,7 @@ function ProjectFilter() {
   // fetch the departments
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
-      path: "/wp/v2/department/?per_page=100"
+      path: "/wp/v2/department/?per_page=100&post_type=research-listing&_fields=id,count,name,slug"
     }).then(data => {
       Object.keys(data).forEach(key => {
         if (data[key].count === 0) {

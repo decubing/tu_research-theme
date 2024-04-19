@@ -36,7 +36,7 @@ export default function ProjectFilter() {
 
 	// fetch the cats
 	useEffect(() => {
-		apiFetch({ path: "/wp/v2/categories/?per_page=100" }).then((data) => {
+		apiFetch({ path: "/wp/v2/categories/?per_page=100&post_type=research-listing&_fields=id,count,name,slug" }).then((data) => {
 			Object.keys(data).forEach(key => {
 				if (data[key].count === 0) {
 					delete data[key]
@@ -73,7 +73,7 @@ export default function ProjectFilter() {
 
 	// fetch the topics
 	useEffect(() => {
-		apiFetch({ path: "/wp/v2/topic/?per_page=100" }).then((data) => {
+		apiFetch({ path: "/wp/v2/topic/?per_page=100&post_type=research-listing&_fields=id,count,name,slug" }).then((data) => {
 			Object.keys(data).forEach(key => {
 				if (data[key].count === 0) {
 					delete data[key]
@@ -95,7 +95,7 @@ export default function ProjectFilter() {
 
 	// fetch the schools
 	useEffect(() => {
-		apiFetch({ path: "/wp/v2/school/?per_page=100" }).then((data) => {
+		apiFetch({ path: "/wp/v2/school/?per_page=100&post_type=research-listing&_fields=id,count,name,slug" }).then((data) => {
 			Object.keys(data).forEach(key => {
 				if (data[key].count === 0) {
 					delete data[key]
@@ -116,7 +116,7 @@ export default function ProjectFilter() {
 
 	// fetch the departments
 	useEffect(() => {
-		apiFetch({ path: "/wp/v2/department/?per_page=100" }).then((data) => {
+		apiFetch({ path: "/wp/v2/department/?per_page=100&post_type=research-listing&_fields=id,count,name,slug" }).then((data) => {
 			Object.keys(data).forEach(key => {
 				if (data[key].count === 0) {
 					delete data[key]
