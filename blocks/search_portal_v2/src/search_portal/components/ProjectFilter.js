@@ -142,8 +142,14 @@ export default function ProjectFilter() {
 	useEffect(() => {
 		setLoadingPosts(true);
 		wp.api.loadPromise.done(function () {
-			new wp.api.collections.ResearchListing()
-				.fetch({ data: { per_page: 300 } })
+			/* new wp.api.collections.ResearchListing()
+				.fetch(
+					{
+						?_fields=author,id,excerpt,title,link 
+						data: { per_page: 300
+					} 
+				}) */
+				apiFetch({ path: "/wp/v2/research-listing/?per_page=300&_fields=id,title,link,categories,topic,department,school" })
 				.then((data) => {
 					setPostData(data);
 					setLoadingPosts(false);
