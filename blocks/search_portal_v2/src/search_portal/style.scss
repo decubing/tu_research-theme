@@ -124,7 +124,7 @@ $wp-gloabl--wide-width: var(--wp--style--global--wide-size);
 				}
 				list-style-type: none;
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 				gap: 1em;
 
 				.post {
@@ -147,6 +147,17 @@ $wp-gloabl--wide-width: var(--wp--style--global--wide-size);
 							display: flex;
 							flex-direction: column;
 							justify-content: space-between;
+							width:100%;
+							.post-image-wrapper {
+								max-height:160px;
+								overflow-y: hidden;
+								border-radius: 8px;
+								margin-bottom: 1em;
+								text-align:center;
+								.post-image {
+									min-width: 100%;
+								}
+							}
 							.post-title {
 								font-size: 0.9em;
 								line-height: 1.3em;

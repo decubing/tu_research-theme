@@ -129,7 +129,7 @@
   margin-right: 2em;
   list-style-type: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1em;
 }
 @media only screen and (max-width: 650px) {
@@ -158,6 +158,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
+}
+#search_portal_v2_block .wrapper .main .posts-list .post a .post-inner .post-image-wrapper {
+  max-height: 160px;
+  overflow-y: hidden;
+  border-radius: 8px;
+  margin-bottom: 1em;
+  text-align: center;
+}
+#search_portal_v2_block .wrapper .main .posts-list .post a .post-inner .post-image-wrapper .post-image {
+  min-width: 100%;
 }
 #search_portal_v2_block .wrapper .main .posts-list .post a .post-inner .post-title {
   font-size: 0.9em;

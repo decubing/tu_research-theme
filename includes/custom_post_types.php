@@ -92,3 +92,31 @@ add_filter("rest_research-listing_collection_params", function($params) {
 	};
     return $params;
 });
+
+// add the project image url to wp-json
+add_action( 'rest_api_init', 'rest_research_listing_meta_field' );
+function rest_research_listing_meta_field() {
+  register_rest_field( 'research-listing', 'image', array(
+         'get_callback'    => 'get_project_image_for_api',
+         'schema'          => null,
+      )
+  );
+}
+
+
+function get_project_image_for_api( $object ) {
+	$post_id = $object['id'];
+	
+	$post_meta = get_post_meta( $post_id );
+	$post_image = get_the_post_thumbnail_url( $post_id );  
+	if($post_image == false){
+	// for project created with the older NTC form, the images are embedded in the content, so extract the first image url from the raw content
+	$content = stripslashes(get_the_content($post_id));
+	$image = preg_match("/<img.*?src=[\"|'](.*?)[\"|']/", $content, $urls);
+	$post_image = $urls[1];
+	}
+
+	$post_meta["image_url"] = $post_image;
+  
+	return $post_meta;
+  }

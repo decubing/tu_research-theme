@@ -28,5 +28,6 @@ add_filter( 'login_headerurl', 'trp_login_logo_url' );
 function trp_login_logo_url_title() {
   return 'Tulane Research Network';
 }
-add_filter( 'login_headertitle', 'trp_login_logo_url_title' );
+//add_filter( 'login_headertitle', 'trp_login_logo_url_title' );
+add_filter( 'login_headertext', 'trp_login_logo_url_title' );
 ?>

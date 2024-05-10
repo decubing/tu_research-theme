@@ -54,7 +54,7 @@ require_once('blocks/search_portal_v2/config.php' );
 require_once('includes/login_logo.php' );
 
 // LDAP Authorization
-require_once('includes/ldap_auth.php' );
+//require_once('includes/ldap_auth.php' );
 
 // Shortcodes
 //require_once('includes/shortcodes.php');

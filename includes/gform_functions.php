@@ -126,10 +126,10 @@ function trp_set_subform_fields( $form ) {
       case 5:
         $ff->defaultValue = $email ?: '';
         break;
-      case 6:
+      /* case 6:
         if ($uploads) $ff->label = $uploads; 
         else $ff->visibility = 'hidden';
-        break;
+        break; */
     }
   }
 
