@@ -53,6 +53,9 @@ require_once('blocks/search_portal_v2/config.php' );
 // Update Logo
 require_once('includes/login_logo.php' );
 
+// Endpoints
+require_once('includes/custom_api_endpoints.php' );
+
 // LDAP Authorization
 //require_once('includes/ldap_auth.php' );
 

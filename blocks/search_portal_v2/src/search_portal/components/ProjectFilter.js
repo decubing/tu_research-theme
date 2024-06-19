@@ -35,13 +35,26 @@ export default function ProjectFilter() {
 
 	// fetch the cats
 	useEffect(() => {
+		let thePath;
+		if(qSchool !== null){
+			console.log(qSchool);
+			console.log("Using SoM Project list...")
+			thePath = "tu-research-theme/v1/som-cats";
+		}else {
+			thePath = "/wp/v2/categories/?per_page=100&post_type=research-listing&_fields=id,count,name,slug";
+		} 
 		apiFetch({
-			path: "/wp/v2/categories/?per_page=100&post_type=research-listing&_fields=id,count,name,slug",
+			//path: "/wp/v2/categories/?per_page=100&post_type=research-listing&_fields=id,count,name,slug",
+			path: thePath
 		}).then((data) => {
+			console.log(data);
 			Object.keys(data).forEach((key) => {
 				if (data[key].count === 0) {
 					delete data[key];
 				}
+				if(data && data[key] && data[key].hasOwnProperty("term_id")){
+					data[key].id = data[key].term_id;
+				} 
 			});
 			setCategories(data);
 			if (qCats !== "") {
@@ -74,13 +87,23 @@ export default function ProjectFilter() {
 
 	// fetch the topics
 	useEffect(() => {
+		let thePath;
+		if(qSchool !== null){
+			console.log("Using SoM Topic list...")
+			thePath = "tu-research-theme/v1/som-topics";
+		}else {
+			thePath = "/wp/v2/topic/?per_page=100&post_type=research-listing&_fields=id,count,name,slug";
+		} 
 		apiFetch({
-			path: "/wp/v2/topic/?per_page=100&post_type=research-listing&_fields=id,count,name,slug",
+			path: thePath,
 		}).then((data) => {
 			Object.keys(data).forEach((key) => {
 				if (data[key].count === 0) {
 					delete data[key];
 				}
+				if(data && data[key] && data[key].hasOwnProperty("term_id")){
+					data[key].id = data[key].term_id;
+				} 
 			});
 			setTopics(data);
 			//console.log(data);
@@ -121,13 +144,23 @@ export default function ProjectFilter() {
 
 	// fetch the departments
 	useEffect(() => {
+		let thePath;
+		if(qSchool !== null){
+			console.log("Using SoM department list...")
+			thePath = "tu-research-theme/v1/som-departments";
+		}else {
+			thePath = "/wp/v2/department/?per_page=100&post_type=research-listing&_fields=id,count,name,slug";
+		} 
 		apiFetch({
-			path: "/wp/v2/department/?per_page=100&post_type=research-listing&_fields=id,count,name,slug",
+			path: thePath,
 		}).then((data) => {
 			Object.keys(data).forEach((key) => {
 				if (data[key].count === 0) {
 					delete data[key];
 				}
+				if(data && data[key] && data[key].hasOwnProperty("term_id")){
+					data[key].id = data[key].term_id;
+				} 
 			});
 			setDepartments(data);
 			if (qDepartment !== "") {
@@ -173,9 +206,9 @@ export default function ProjectFilter() {
 
 	// filter the posts
 	useEffect(() => {
-		console.log("updating display...");
+		/* console.log("updating display...");
 		console.log(postData);
-		console.log("blah");
+		console.log("blah"); */
 		let p = postData;
 
 		let selectedCategoryIds = selectedCategories.map((el) => el.id);
