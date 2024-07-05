@@ -28,6 +28,7 @@ function blockly_register_custom_taxonomy ($singular, $plural, $object_type='pos
       "add_new_item" => __( "Add New $singular" ),
       "new_item_name" => __( "New $singular Name" ),
       "menu_name" => __( "$plural" ),
+      'update_count_callback' => '_update_generic_term_count',
     ),
     'show_in_rest' => true, // Need this for it too show up in the block editor
     "query_var" => true,
