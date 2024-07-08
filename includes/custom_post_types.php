@@ -87,9 +87,9 @@ function trp_cpt_default_args( $singular, $plural, $description, $icon_slug='das
 
 // Increase the number of posts we can fetch via the API
 add_filter("rest_research-listing_collection_params", function($params) {
-	if ( isset($params['per_page']) ) {
+	//if ( isset($params['per_page']) ) {
     $params['per_page']['maximum'] = 500;
-	};
+	//};
     return $params;
 });
 

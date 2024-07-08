@@ -37,7 +37,7 @@ export default function ProjectFilter() {
 	useEffect(() => {
 		let thePath;
 		if(qSchool !== null){
-			console.log(qSchool);
+			//console.log(qSchool);
 			console.log("Using SoM Project list...")
 			thePath = "tu-research-theme/v1/som-cats";
 		}else {
@@ -47,7 +47,7 @@ export default function ProjectFilter() {
 			//path: "/wp/v2/categories/?per_page=100&post_type=research-listing&_fields=id,count,name,slug",
 			path: thePath
 		}).then((data) => {
-			console.log(data);
+			//console.log(data);
 			Object.keys(data).forEach((key) => {
 				if (data[key].count === 0) {
 					delete data[key];
@@ -57,6 +57,7 @@ export default function ProjectFilter() {
 				} 
 			});
 			setCategories(data);
+			console.log(data);
 			if (qCats !== "") {
 				// if we have a query category, set the state from that
 				let queryCat = data.filter((obj) => {
@@ -92,17 +93,18 @@ export default function ProjectFilter() {
 			console.log("Using SoM Topic list...")
 			thePath = "tu-research-theme/v1/som-topics";
 		}else {
-			thePath = "/wp/v2/topic/?per_page=100&post_type=research-listing&_fields=id,count,name,slug";
+			thePath = "/wp/v2/topic/?per_page=200&post_type=research-listing&_fields=id,count,name,slug";
 		} 
 		apiFetch({
 			path: thePath,
 		}).then((data) => {
+			console.log(data);
 			Object.keys(data).forEach((key) => {
 				if (data[key].count === 0) {
 					delete data[key];
 				}
 				if(data && data[key] && data[key].hasOwnProperty("term_id")){
-					data[key].id = data[key].term_id;
+					data[key].id = parseInt(data[key].term_id);
 				} 
 			});
 			setTopics(data);
@@ -162,6 +164,7 @@ export default function ProjectFilter() {
 					data[key].id = data[key].term_id;
 				} 
 			});
+			
 			setDepartments(data);
 			if (qDepartment !== "") {
 				// if we have a query category, set the state from that
@@ -183,6 +186,7 @@ export default function ProjectFilter() {
 		setLoadingPosts(true);
 		let thePath = "";
 		if(undergradOnly){
+			console.log("Showing undergrad only...");
 			thePath = "/wp/v2/research-listing/?per_page=300&_fields=id,title,link,categories,topic,department,school,image&tags_exclude=524";
 		}else {
 			thePath = "/wp/v2/research-listing/?per_page=300&_fields=id,title,link,categories,topic,department,school,image";
@@ -210,6 +214,7 @@ export default function ProjectFilter() {
 		console.log(postData);
 		console.log("blah"); */
 		let p = postData;
+		console.log(p);
 
 		let selectedCategoryIds = selectedCategories.map((el) => el.id);
 		if (selectedCategoryIds.length > 0) {
@@ -223,10 +228,15 @@ export default function ProjectFilter() {
 		let selectedTopicsIds = selectedTopics.map((el) => el.id);
 		if (selectedTopicsIds.length > 0) {
 			p = p.filter((el) => {
-				for (const topic of el.topic) {
-					return selectedTopicsIds.includes(topic);
-				}
-			});
+				//for (const topic of el.topic) {
+					//console.log(selectedTopicsIds);
+					//console.log(el.topic);
+					//if(selectedTopicsIds.includes(topic)) console.log( selectedTopicsIds, topic)
+					let intersection = selectedTopicsIds.filter(element => el.topic.includes(element));
+					console.log(intersection);
+					return intersection.length > 0 ? true : false;
+				//}
+			}); 
 		}
 
 		let selectedSchoolIds = selectedSchools.map((el) => el.id);

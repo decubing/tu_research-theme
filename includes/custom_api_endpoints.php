@@ -37,7 +37,8 @@ add_action('rest_api_init', function () {
 
 function get_som_topics()
 {
-    $the_query = new WP_Query( array(
+    
+    $the_topic_query = new WP_Query( array(
         'post_type' => 'research-listing',
         'tax_query' => array(
             array (
@@ -47,13 +48,27 @@ function get_som_topics()
             )
         ),
     ) );    
-    $som_projects = $the_query -> posts;
+    $som_projects = $the_topic_query -> posts;
     // NEW: make array of the post IDs in one step
     $som_projects_ids = wp_list_pluck( $som_projects, 'ID' );
+    $ids = $som_projects_ids;
     // get the terms
-    $my_terms = wp_get_object_terms( $som_projects_ids, 'topic' );
-
-    return $my_terms;
+    /* $my_terms = wp_get_object_terms( $som_projects_ids, 'topic' );
+    return $my_terms; */
+    $placeholders = array_fill(0, count($ids), '%d');
+    $format = implode(', ', $placeholders);
+    global $wpdb;
+    $results = $wpdb->get_results( $wpdb->prepare(
+        " SELECT terms.name, terms.term_id, COUNT(tr.object_id) as count FROM {$wpdb->terms} terms " .
+        " INNER JOIN {$wpdb->term_taxonomy} tt ON (tt.term_id = terms.term_id) " .
+        " INNER JOIN {$wpdb->term_relationships} tr ON (tr.term_taxonomy_id = tt.term_taxonomy_id) " .
+        " WHERE tr.object_id IN ({$format})". 
+        " AND tt.taxonomy = 'topic' ".
+        "GROUP BY terms.term_id "
+        ,
+        $ids
+    ) );
+    return $results; 
 }
 
 add_action('rest_api_init', function () {
