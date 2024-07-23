@@ -11,22 +11,20 @@ export default function ProjectFilter() {
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const qCats = searchParams.get("cat"); //fetch any query strings
-	//const qTags = searchParams.get("tags");
+	const qTags = searchParams.get("tags");
 	const qTopics = searchParams.get("topics");
 	const qSchool = searchParams.get("school");
 	const qDepartment = searchParams.get("department");
 	const undergradOnly = searchParams.get("undergrad_only"); // use this flag to exclude SoM-only projects
 
-	/* const [queryCategory, setQueryCategory] = useState(qCats); 
-	console.log(queryCategory); */
 	const [categories, setCategories] = useState([]);
-	//const [tags, setTags] = useState([]);
+	const [tags, setTags] = useState([]);
 	const [topics, setTopics] = useState([]);
 	const [schools, setSchools] = useState([]);
 	const [departments, setDepartments] = useState([]);
 
 	const [selectedCategories, setSelectedCategories] = useState([]);
-	//const [selectedTags, setSelectedTags] = useState([]);
+	const [selectedTags, setSelectedTags] = useState([]);
 	const [selectedTopics, setSelectedTopics] = useState([]);
 	const [selectedSchools, setSelectedSchools] = useState([]);
 	const [selectedDepartments, setSelectedDepartments] = useState([]);
@@ -57,7 +55,7 @@ export default function ProjectFilter() {
 				} 
 			});
 			setCategories(data);
-			console.log(data);
+			//console.log(data);
 			if (qCats !== "") {
 				// if we have a query category, set the state from that
 				let queryCat = data.filter((obj) => {
@@ -71,10 +69,25 @@ export default function ProjectFilter() {
 	}, []);
 
 	// fetch the tags
-	/* useEffect(() => {
-		apiFetch({ path: "/wp/v2/tags" }).then((data) => {
+	useEffect(() => {
+		/* let thePath;
+		if(qSchool !== null){
+			console.log("Using SoM Tag list...")
+			thePath = "tu-research-theme/v1/som-topics";
+		}else {
+			thePath = "/wp/v2/tags?per_page=200&post_type=research-listing&_fields=id,count,name,slug";
+		}  */
+		apiFetch({ path: "tu-research-theme/v1/som-tags" }).then((data) => {
+			Object.keys(data).forEach((key) => {
+				if (data[key].count === 0) {
+					delete data[key];
+				}
+				if(data && data[key] && data[key].hasOwnProperty("term_id")){
+					data[key].id = parseInt(data[key].term_id);
+				} 
+			});
 			setTags(data);
-			if(qTags !== ""){ // if we have a query tag, set the state from that
+			/* if(qTags !== ""){ // if we have a query tag, set the state from that
 				let queryTagsIdArray = qTags.split("|");
 				let queryTagsArray = data.filter(obj => {
 					return queryTagsIdArray.includes(String(obj.id)) 
@@ -82,9 +95,9 @@ export default function ProjectFilter() {
 				if(queryTagsArray && queryTagsArray.length > 0){
 					setSelectedTags(queryTagsArray);
 				};
-			}
+			} */
 		});
-	}, []); */
+	}, []); 
 
 	// fetch the topics
 	useEffect(() => {
@@ -93,12 +106,12 @@ export default function ProjectFilter() {
 			console.log("Using SoM Topic list...")
 			thePath = "tu-research-theme/v1/som-topics";
 		}else {
-			thePath = "/wp/v2/topic/?per_page=200&post_type=research-listing&_fields=id,count,name,slug";
+			thePath = "/wp/v2/topic/?per_page=500&post_type=research-listing&_fields=id,count,name,slug";
 		} 
 		apiFetch({
 			path: thePath,
 		}).then((data) => {
-			console.log(data);
+			//console.log(data);
 			Object.keys(data).forEach((key) => {
 				if (data[key].count === 0) {
 					delete data[key];
@@ -109,7 +122,7 @@ export default function ProjectFilter() {
 			});
 			setTopics(data);
 			//console.log(data);
-			if (qTopics !== "") {
+			/* if (qTopics !== "") {
 				// if we have a query category, set the state from that
 				let queryTopic = data.filter((obj) => {
 					return obj.id == qTopics;
@@ -117,7 +130,7 @@ export default function ProjectFilter() {
 				if (queryTopic && queryTopic.length > 0) {
 					setSelectedTopics(queryTopic[0]);
 				}
-			}
+			} */
 		});
 	}, []);
 
@@ -187,18 +200,11 @@ export default function ProjectFilter() {
 		let thePath = "";
 		if(undergradOnly){
 			console.log("Showing undergrad only...");
-			thePath = "/wp/v2/research-listing/?per_page=300&_fields=id,title,link,categories,topic,department,school,image&tags_exclude=524";
+			thePath = "/wp/v2/research-listing/?per_page=300&_fields=id,title,link,categories,topic,department,school,tags,image&tags_exclude=524";
 		}else {
-			thePath = "/wp/v2/research-listing/?per_page=300&_fields=id,title,link,categories,topic,department,school,image";
+			thePath = "/wp/v2/research-listing/?per_page=300&_fields=id,title,link,categories,topic,department,school,tags,image";
 		}
 		wp.api.loadPromise.done(function () {
-			/* new wp.api.collections.ResearchListing()
-				.fetch(
-					{
-						?_fields=author,id,excerpt,title,link 
-						data: { per_page: 300
-					} 
-				}) */
 			apiFetch({
 				path: thePath,
 			}).then((data) => {
@@ -210,11 +216,8 @@ export default function ProjectFilter() {
 
 	// filter the posts
 	useEffect(() => {
-		/* console.log("updating display...");
-		console.log(postData);
-		console.log("blah"); */
+		
 		let p = postData;
-		console.log(p);
 
 		let selectedCategoryIds = selectedCategories.map((el) => el.id);
 		if (selectedCategoryIds.length > 0) {
@@ -225,17 +228,19 @@ export default function ProjectFilter() {
 			});
 		}
 
+		let selectedTagIds = selectedTags.map((el) => el.id);
+		if (selectedTagIds.length > 0) {
+			p = p.filter((el) => {
+				let intersection = selectedTagIds.filter(element => el.tags.includes(element));
+				return intersection.length > 0 ? true : false;
+			});
+		}
+
 		let selectedTopicsIds = selectedTopics.map((el) => el.id);
 		if (selectedTopicsIds.length > 0) {
 			p = p.filter((el) => {
-				//for (const topic of el.topic) {
-					//console.log(selectedTopicsIds);
-					//console.log(el.topic);
-					//if(selectedTopicsIds.includes(topic)) console.log( selectedTopicsIds, topic)
 					let intersection = selectedTopicsIds.filter(element => el.topic.includes(element));
-					console.log(intersection);
 					return intersection.length > 0 ? true : false;
-				//}
 			}); 
 		}
 
@@ -262,6 +267,7 @@ export default function ProjectFilter() {
 	}, [
 		postData,
 		selectedTopics,
+		selectedTags,
 		selectedCategories,
 		selectedSchools,
 		selectedDepartments,
@@ -270,13 +276,6 @@ export default function ProjectFilter() {
 	// construct the section title
 	const [title, setTitle] = useState("All Projects");
 	function getTitle() {
-		/* let category = selectedCategories ? selectedCategories.name : null;
-		let topics = selectedTopics.map((topic) => topic.name).join(", ");
-
-		if (category == null && topics == "") return "All Projects";
-		if (category == null && topics != "") return topics + " Projects";
-		if (category != null && topics == "") return category + " Projects";
-		return category + " with " + topics + " Projects"; */
 		let schools = selectedSchools.map((school) => school.name).join(", ");
 		if (schools !== "") return schools + " Projects";
 		return "All Projects";
@@ -287,6 +286,9 @@ export default function ProjectFilter() {
 	};
 	const resetTopics = () => {
 		setSelectedTopics([]);
+	};
+	const resetTags = () => {
+		setSelectedTags([]);
 	};
 	const resetSchools = () => {
 		setSelectedSchools([]);
@@ -389,6 +391,65 @@ export default function ProjectFilter() {
 									>
 										<Listbox.Options>
 											{topics.map((topic, i) => (
+												<Listbox.Option
+													key={i}
+													value={topic}
+													className={({ active }) =>
+														`${active ? "active" : ""}`
+													}
+												>
+													{({ selected }) => (
+														<div
+															className={
+																selected ? "tags-item selected" : "tags-item"
+															}
+														>
+															{selected ? (
+																<CheckIcon
+																	className="check-icon"
+																	aria-hidden="true"
+																/>
+															) : null}
+															{topic.name} ({topic.count})
+														</div>
+													)}
+												</Listbox.Option>
+											))}
+										</Listbox.Options>
+									</Transition>
+								</Listbox>
+							</div>
+						)}
+						{(tags && qSchool !== null) && (
+							<div className="tags-selector">
+								<label
+									for="headlessui-listbox-button-:r2:"
+									className="functions-title"
+								>
+									Tags
+								</label>
+								<div onClick={resetTags} className="reset">
+									Reset
+								</div>
+								<Listbox
+									value={selectedTags}
+									onChange={setSelectedTags}
+									multiple
+								>
+									<Listbox.Button>
+										{selectedTags.length > 0
+											? selectedTags.map((topic) => topic.name).join(", ")
+											: "All Tags:"}
+										<ChevronUpDownIcon className="button-icon" />
+									</Listbox.Button>
+									<Transition
+										as={Fragment}
+										leave="transition ease-in duration-100"
+										leaveFrom="opacity-100"
+										leaveTo="opacity-0"
+									>
+										<Listbox.Options>
+											{tags.map((topic, i) => (
 												<Listbox.Option
 													key={i}
 													value={topic}
