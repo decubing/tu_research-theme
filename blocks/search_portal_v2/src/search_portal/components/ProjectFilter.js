@@ -198,10 +198,12 @@ export default function ProjectFilter() {
 	useEffect(() => {
 		setLoadingPosts(true);
 		let thePath = "";
-		if(undergradOnly){
+		console.log(undergradOnly);
+		if(undergradOnly !== null){
 			console.log("Showing undergrad only...");
 			thePath = "/wp/v2/research-listing/?per_page=300&_fields=id,title,link,categories,topic,department,school,tags,image&tags_exclude=524";
 		}else {
+			console.log("Not showing undergrad only...");
 			thePath = "/wp/v2/research-listing/?per_page=300&_fields=id,title,link,categories,topic,department,school,tags,image";
 		}
 		wp.api.loadPromise.done(function () {
