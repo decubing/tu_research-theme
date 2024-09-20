@@ -3,27 +3,6 @@
     "title": "Listing Meta",
     "fields": [
         {
-            "key": "field_66edc63774a48",
-            "label": "Test Field",
-            "name": "test_field",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_621540fcda736",
             "label": "Faculty Name",
             "name": "faculty_name",
@@ -127,7 +106,7 @@
             "label": "Additional Applicant Upload Prompt",
             "name": "additional_applicant_uploads",
             "aria-label": "",
-            "type": "text",
+            "type": "textarea",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -139,9 +118,9 @@
             "default_value": "",
             "maxlength": "",
             "allow_in_bindings": 1,
+            "rows": "",
             "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "new_lines": ""
         }
     ],
     "location": [
@@ -162,5 +141,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726858884
+    "modified": 1726861503
 }
