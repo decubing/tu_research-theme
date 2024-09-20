@@ -161,6 +161,7 @@ if( function_exists('acf_add_local_field_group') ):
   ));  
 
   // Listing Meta
+  /*
   acf_add_local_field_group(array(
     'key' => 'group_5f0cbe05172b6',
     'title' => 'Listing Meta',
@@ -276,5 +277,5 @@ if( function_exists('acf_add_local_field_group') ):
     'active' => true,
     'description' => '',
   ));
-  
+  */
 endif;

@@ -24,11 +24,11 @@ function trp_update_listings( $post_id, $entry, $form ) {
   $post->post_type = 'research-listing';
   $post->post_content = $template->post_content;
   $post->post_title = $entry[22]; // Project title
-  $post->post_excerpt = $entry[9]; // Project teaser
+  //$post->post_excerpt = $entry[9]; // Project teaser
   
   // Content placeholder rewriting map
   $rewrite_map = [
-    'TEASER_REWRITE' => $entry[9],
+    //'TEASER_REWRITE' => $entry[9],
     'DESCRIPTION_REWRITE' => $entry[21],
     'OUTCOME_REWRITE' => $entry[10],
     'WORKLOAD_REWRITE' => $entry[11],
@@ -37,6 +37,7 @@ function trp_update_listings( $post_id, $entry, $form ) {
     'ELIGIBLE_REWRITE' => $entry[14],
     'PARTNERS_REWRITE' => $entry[15],
     'SPONSORS_REWRITE' => $entry[16],
+    'UPLOADS_REWRITE' => $entry[23], 
   ];
 
   // Special case for the post thumbnail
@@ -129,7 +130,7 @@ function trp_set_subform_fields( $form ) {
       /* case 6:
         if ($uploads) $ff->label = $uploads; 
         else $ff->visibility = 'hidden';
-        break; */
+        break;  */
     }
   }
 

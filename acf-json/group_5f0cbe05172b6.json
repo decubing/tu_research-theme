@@ -3,9 +3,31 @@
     "title": "Listing Meta",
     "fields": [
         {
+            "key": "field_66edc63774a48",
+            "label": "Test Field",
+            "name": "test_field",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_621540fcda736",
             "label": "Faculty Name",
             "name": "faculty_name",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -25,6 +47,7 @@
             "key": "field_6215412cda737",
             "label": "School",
             "name": "school",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -44,6 +67,7 @@
             "key": "field_5f0cbe0c71658",
             "label": "Contact Email",
             "name": "contact_email",
+            "aria-label": "",
             "type": "email",
             "instructions": "",
             "required": 0,
@@ -62,6 +86,7 @@
             "key": "field_5f0cbec971659",
             "label": "Custom Applicant Question 1",
             "name": "custom_applicant_question_1",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -81,6 +106,7 @@
             "key": "field_5f0cbee77165a",
             "label": "Custom Applicant Question 2",
             "name": "custom_applicant_question_2",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -100,7 +126,8 @@
             "key": "field_5f21ee93fe3ad",
             "label": "Additional Applicant Upload Prompt",
             "name": "additional_applicant_uploads",
-            "type": "textarea",
+            "aria-label": "",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -110,10 +137,11 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
             "maxlength": "",
-            "rows": "",
-            "new_lines": ""
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -131,7 +159,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1645560211
+    "show_in_rest": 0,
+    "modified": 1726858884
 }
