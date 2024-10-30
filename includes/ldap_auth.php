@@ -29,3 +29,11 @@ function trp_authorizer_set_role_and_meta( $user, $user_data ) {
     update_user_meta( $user->ID, 'tu_school', $school );
   }
 }
+
+/**
+ * Add custom LDAP attributes (possible with new authorizer_additional_ldap_attributes_to_retrieve hook in Authorizer 3.10.2 )
+ */
+add_filter('authorizer_additional_ldap_attributes_to_retrieve', 'add_authorizer_custom_ldap_attributes', 10, 2);
+function add_authorizer_custom_ldap_attributes(){
+  return array( 'company', 'department' );
+}
