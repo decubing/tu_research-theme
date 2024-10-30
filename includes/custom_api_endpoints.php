@@ -16,6 +16,7 @@ function get_som_cats()
                 'taxonomy' => 'school',
                 'field' => 'slug',
                 'terms' => 'school-of-medicine',
+                'operator' => 'IN'
             )
         ),
     ) );    

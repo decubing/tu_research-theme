@@ -4142,7 +4142,7 @@ function ProjectFilter() {
     let thePath;
     if (qSchool !== null) {
       //console.log(qSchool);
-      console.log("Using SoM Project list...");
+      console.log("Using SoM Category list...");
       thePath = "tu-research-theme/v1/som-cats";
     } else {
       thePath = "/wp/v2/categories/?per_page=100&post_type=research-listing&_fields=id,count,name,slug";
