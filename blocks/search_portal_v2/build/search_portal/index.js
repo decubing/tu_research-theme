@@ -4355,12 +4355,13 @@ function ProjectFilter() {
         }
       });
     }
-    let selectedDepartmentIds = selectedDepartments.map(el => el.id);
+    let selectedDepartmentIds = selectedDepartments.map(el => parseInt(el.id));
+    console.log(selectedDepartmentIds);
+    console.log(p);
     if (selectedDepartmentIds.length > 0) {
       p = p.filter(el => {
-        for (const topic of el.department) {
-          return selectedDepartmentIds.includes(topic);
-        }
+        let intersection = selectedDepartmentIds.filter(element => el.department.includes(element));
+        return intersection.length > 0 ? true : false;
       });
     }
     setTitle(getTitle());
